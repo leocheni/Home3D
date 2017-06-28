@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Home3D">
+    <output-path>$PROJECT_DIR$/out/artifacts/Home3D</output-path>
+    <root id="archive" name="Home3D.jar">
+      <element id="module-output" name="Home3D" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
