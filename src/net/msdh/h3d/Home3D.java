@@ -4,28 +4,19 @@ package net.msdh.h3d;
 import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
-import com.sun.j3d.utils.behaviors.mouse.MouseBehavior;
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
 import com.sun.j3d.utils.behaviors.mouse.MouseTranslate;
 import com.sun.j3d.utils.behaviors.mouse.MouseWheelZoom;
-import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
-import com.sun.j3d.utils.geometry.Primitive;
-import com.sun.j3d.utils.image.TextureLoader;
 import com.sun.j3d.utils.pickfast.PickCanvas;
-import com.sun.j3d.utils.picking.PickResult;
-import com.sun.j3d.utils.picking.behaviors.PickMouseBehavior;
 import com.sun.j3d.utils.universe.SimpleUniverse;
-import org.w3c.dom.UserDataHandler;
 
 import javax.media.j3d.*;
 import javax.vecmath.Color3f;
-import javax.vecmath.Color4f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -124,12 +115,15 @@ public class Home3D extends MouseAdapter {
       ObjectFile f = new ObjectFile();
       f.setFlags(ObjectFile.RESIZE | ObjectFile.TRIANGULATE | ObjectFile.STRIPIFY);
       System.out.println("Loading scene ...");
+      try{
+        Scene s = f.load(objectPatch+"\\"+object+".obj");
+        mainTrans.addChild(s.getSceneGroup());
+        objects = s.getNamedObjects();
 
-      Scene s = f.load(objectPatch+"\\"+object+".obj");
-      mainTrans.addChild(s.getSceneGroup());
-
-      objects = s.getNamedObjects();
-
+      }
+      catch(Exception e){
+        e.printStackTrace();
+      }
 
       for(Enumeration e = objects.keys() ; e.hasMoreElements() ;){
         Object key = e.nextElement();
@@ -709,5 +703,12 @@ public class Home3D extends MouseAdapter {
 
     public void setObject(String object) {
         this.object = object;
+    }
+
+    public void add(){
+       canvas3D.getGraphics2D().setColor(Color.black);
+       canvas3D.getGraphics2D().drawString("Heads Up Display (HUD) Works!",100,100);
+       canvas3D.getGraphics2D().flush(false);
+      //canvas3D.
     }
 }

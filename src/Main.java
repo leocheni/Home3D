@@ -36,14 +36,20 @@ public class Main {
       myWindow.setLayout(null);
       myWindow.setPreferredSize(new Dimension(410, 50));
       final Home3D home3D = new Home3D("F:\\dev\\projects\\lab\\dh\\console\\Resources\\Objects","F:\\dev\\projects\\lab\\dh\\console\\Resources\\Textures",700,500);
-      home3D.setObject("myhouse");
+      //home3D.setObject("myhouse");
+      //home3D.setObject("myhouse_v4.2i");
+      home3D.setObject("myhouse_v4.2i1");
+      //home3D.setObject("myhouse_v4.2i3");
       home3D.create();
       //final Home3D home3D = new Home3D("F:\\dev\\projects\\lab\\dh\\console\\Resources\\Objects\\woman.obj","F:\\dev\\projects\\lab\\dh\\console\\Resources\\Textures\\",700,500);
       //home3D.setTexturePatch();
       //home3D.setObjectPatch();
       //home3D.createShape("woman");
 
+        home3D.add();
+
       myWindow.add(home3D.getCanvas3D());
+
 
       DefaultComboBoxModel objName = new DefaultComboBoxModel();
 
